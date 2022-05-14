@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.marsphotosapp.R
 import com.example.marsphotosapp.databinding.FragmentOverviewBinding
+import com.example.marsphotosapp.overview.adapter.PhotoGridAdapter
 
 class OverviewFragment : Fragment() {
     private val viewModel: OverviewViewModel by viewModels()
@@ -15,10 +16,11 @@ class OverviewFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = FragmentOverviewBinding.inflate(inflater)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+        binding.recyclerViewPhotos.adapter = PhotoGridAdapter()
         return binding.root
     }
 }
